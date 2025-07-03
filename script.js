@@ -46,6 +46,9 @@ let clientes = [
 ];
 
 function renderizarTabela() {
+  //limpa todo o HTML de dentro da tabela
+  tabela.innerHTML = "";
+
   //forEach vai passar por cada item
   clientes.forEach((cliente) => {
     //para cada cliente
@@ -90,6 +93,39 @@ function renderizarTabela() {
     tabela.appendChild(tr);
   });
 }
+
+form.addEventListener("submit", (event) => {
+  //sempre use isso para evitar recarrecamento da pagina ao enviar formulário
+  event.preventDefault();
+
+  //capturar os valores digitados nos inputs
+  const nome = inputNome.value;
+  const sobrenome = inputSobrenome.value;
+  const cpf = inputCpf.value;
+  const email = inputEmail.value;
+
+  //verifico se tenho todos os campos digitados
+  if (!nome || !sobrenome || !cpf || !email) {
+    return;
+  }
+
+  //preparar o objeto
+  const objCliente = {
+    nome,
+    sobrenome,
+    cpf,
+    email,
+  };
+
+  //inserindo o objeto no array clientes
+  clientes.push(objCliente);
+
+  //resetar meu formulário
+  form.reset();
+
+  //atualizo a lista da tabela
+  renderizarTabela();
+});
 
 //executando a função de leitura dos dados (READ)
 renderizarTabela();
