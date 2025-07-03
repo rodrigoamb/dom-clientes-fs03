@@ -46,9 +46,12 @@ let clientes = [
 ];
 
 function renderizarTabela() {
+  //forEach vai passar por cada item
   clientes.forEach((cliente) => {
+    //cria o <tr></tr> principal do item
     const tr = document.createElement("tr");
 
+    //injeta os dados direto pelo innerHTML
     tr.innerHTML = `
         <td>${cliente.nome}</td>
         <td>${cliente.sobrenome}</td>
@@ -56,24 +59,36 @@ function renderizarTabela() {
         <td>${cliente.email}</td>
     `;
 
+    //cria o <td> que receberá os botões
     const tdAcoes = document.createElement("td");
+    //adiciona class="acoes" no td criado
     tdAcoes.classList.add("acoes");
 
+    //criando o button editar
     const btnEditar = document.createElement("button");
+    //inserindo o texto do botao
     btnEditar.textContent = "Editar";
+    //adicionando class="editar" no botao
     btnEditar.classList.add("editar");
 
+    //criando o button excluir
     const btnExcluir = document.createElement("button");
+    //inserindo o texto do botao
     btnExcluir.textContent = "Excluir";
+    //adicionando class="exluir" no botao
     btnExcluir.classList.add("excluir");
 
+    //inserindo botao editar e excluir dentro do td acoes
     tdAcoes.appendChild(btnEditar);
     tdAcoes.appendChild(btnExcluir);
 
+    //inserindo td acoes dentro do tr principal do item
     tr.appendChild(tdAcoes);
 
+    //inserindo o tr principal do item dentro do tbody
     tabela.appendChild(tr);
   });
 }
 
+//executando a função de leitura dos dados (READ)
 renderizarTabela();
