@@ -9,3 +9,5 @@ const inputNome = document.getElementById("nome");
 const inputSobrenome = document.getElementById("sobrenome");
 const inputCpf = document.getElementById("cpf");
 const inputEmail = document.getElementById("email");
+
+// ---- inputs do modal editar ----
