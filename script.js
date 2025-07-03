@@ -48,10 +48,11 @@ let clientes = [
 function renderizarTabela() {
   //forEach vai passar por cada item
   clientes.forEach((cliente) => {
+    //para cada cliente
     //cria o <tr></tr> principal do item
     const tr = document.createElement("tr");
 
-    //injeta os dados direto pelo innerHTML
+    //injeta os dados direto pelo innerHTML dentro do tr
     tr.innerHTML = `
         <td>${cliente.nome}</td>
         <td>${cliente.sobrenome}</td>
