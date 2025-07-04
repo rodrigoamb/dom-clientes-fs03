@@ -68,6 +68,8 @@ function renderizarTabela() {
     btnExcluir.textContent = "Excluir";
     //adicionando class="exluir" no botao
     btnExcluir.classList.add("excluir");
+    //adicionando o onClick do excluir
+    btnExcluir.onclick = () => abrirModalExcluir(index);
 
     //inserindo botao editar e excluir dentro do td acoes
     tdAcoes.appendChild(btnEditar);
@@ -124,6 +126,29 @@ function abrirModalEditar(cliente, index) {
 
   modalEditar.style.display = "flex";
 }
+
+function fecharModalEditar() {
+  indexEditando = null;
+  modalEditar.style.display = "none";
+}
+
+btnCancelarEdicao.addEventListener("click", () => {
+  fecharModalEditar();
+});
+
+function abrirModalExcluir(index) {
+  indexExcluindo = index;
+  modalExcluir.style.display = "flex";
+}
+
+function fecharModalExcluir() {
+  indexExcluindo = null;
+  modalExcluir.style.display = "none";
+}
+
+btnCancelarExclusao.addEventListener("click", () => {
+  fecharModalExcluir();
+});
 
 //executando a função de leitura dos dados (READ)
 renderizarTabela();
