@@ -26,12 +26,16 @@ const btnCancelarExclusao = document.getElementById("cancelar-exclusao");
 
 let clientes = [];
 
+//variaveis auxiliares
+let indexEditando = null;
+let indexExcluindo = null;
+
 function renderizarTabela() {
   //limpa todo o HTML de dentro da tabela
   tabela.innerHTML = "";
 
   //forEach vai passar por cada item
-  clientes.forEach((cliente) => {
+  clientes.forEach((cliente, index) => {
     //para cada cliente
     //cria o <tr></tr> principal do item
     const tr = document.createElement("tr");
@@ -55,6 +59,8 @@ function renderizarTabela() {
     btnEditar.textContent = "Editar";
     //adicionando class="editar" no botao
     btnEditar.classList.add("editar");
+    // adicionando o onClick
+    btnEditar.onclick = () => abrirModalEditar(cliente, index);
 
     //criando o button excluir
     const btnExcluir = document.createElement("button");
@@ -107,6 +113,17 @@ form.addEventListener("submit", (event) => {
   //atualizo a lista da tabela
   renderizarTabela();
 });
+
+function abrirModalEditar(cliente, index) {
+  inputEditNome.value = cliente.nome;
+  inputEditSobrenome.value = cliente.sobrenome;
+  inputEditCpf.value = cliente.cpf;
+  inputEditEmail.value = cliente.email;
+
+  indexEditando = index;
+
+  modalEditar.style.display = "flex";
+}
 
 //executando a função de leitura dos dados (READ)
 renderizarTabela();
