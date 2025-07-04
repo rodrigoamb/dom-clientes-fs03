@@ -24,26 +24,7 @@ const btnCancelarEdicao = document.getElementById("cancelar-edicao");
 const btnConfirmarExclusao = document.getElementById("confirmar-exclusao");
 const btnCancelarExclusao = document.getElementById("cancelar-exclusao");
 
-let clientes = [
-  {
-    nome: "Rodrigo",
-    sobrenome: "Medeiros",
-    cpf: "937.837.847-42",
-    email: "rodrigo@gmail.com",
-  },
-  {
-    nome: "Lucas",
-    sobrenome: "Monteiro",
-    cpf: "937.837.999-42",
-    email: "lucas@gmail.com",
-  },
-  {
-    nome: "Ana",
-    sobrenome: "Maria",
-    cpf: "937.847.847-42",
-    email: "Ana@gmail.com",
-  },
-];
+let clientes = [];
 
 function renderizarTabela() {
   //limpa todo o HTML de dentro da tabela
