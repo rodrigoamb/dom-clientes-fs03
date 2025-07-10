@@ -150,5 +150,38 @@ btnCancelarExclusao.addEventListener("click", () => {
   fecharModalExcluir();
 });
 
+formEdicao.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  clientes[indexEditando] = {
+    nome: inputEditNome.value,
+    sobrenome: inputEditSobrenome.value,
+    cpf: inputEditCpf.value,
+    email: inputEditEmail.value,
+  };
+
+  if (
+    !inputEditNome.value ||
+    !inputEditSobrenome.value ||
+    !inputEditCpf.value ||
+    !inputEditEmail.value
+  ) {
+    return;
+  }
+
+  indexEditando = null;
+  fecharModalEditar();
+
+  renderizarTabela();
+});
+
+btnConfirmarExclusao.addEventListener("click", () => {
+  if (indexExcluindo !== null) {
+    clientes.splice(indexExcluindo, 1);
+    fecharModalExcluir();
+    renderizarTabela();
+  }
+});
+
 //executando a função de leitura dos dados (READ)
 renderizarTabela();
